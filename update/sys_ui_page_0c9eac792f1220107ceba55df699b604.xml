@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[$j(document).ready(function(){
+	//Initial Loading
+	var params = {sysparm_title: "Test Report", sysparm_field: "u_request_type", sysparm_type: "donut", sysparm_table: "x_58872_needit_needit", sysparm_aggregate:"COUNT"};
+	var div = $j("#report1");
+	// embedReportById(div, "c2a71f8d2f12e4107ceba55df699b6f9");
+	embedReportByParams(div, params);
+
+	params = {sysparm_title: "Test Report 2", sysparm_field: "u_requested_for", sysparm_type: "bar", sysparm_table: "x_58872_needit_needit", sysparm_aggregate:"COUNT"};
+	div = $j("#report2");
+	embedReportByParams(div, params);
+
+
+	div = $j("#report3");
+	embedReportById(div, "c2a71f8d2f12e4107ceba55df699b6f9");
+
+	params = {sysparm_title: "Test Report 3", sysparm_field: "u_requested_for", sysparm_type: "single_score", sysparm_table: "x_58872_needit_needit", sysparm_aggregate:"COUNT"};
+	div = $j("#report4");
+	embedReportByParams(div, params);
+	
+
+  $j(".refresh").click(function(){
+
+
+
+if($j(this).attr("name") == "report1"){  
+	var params = {sysparm_title: "Test Report", sysparm_field: "u_request_type", sysparm_type: "donut", sysparm_table: "x_58872_needit_needit", sysparm_aggregate:"COUNT"};
+	var div = $j("#report1");
+	// embedReportById(div, "c2a71f8d2f12e4107ceba55df699b6f9");
+	embedReportByParams(div, params);
+}
+else if( $j(this).attr("name") == "report2" ){
+	params = {sysparm_title: "Test Report 2", sysparm_field: "u_requested_for", sysparm_type: "bar", sysparm_table: "x_58872_needit_needit", sysparm_aggregate:"COUNT"};
+	div = $j("#report2");
+	embedReportByParams(div, params);
+
+}
+else if( $j(this).attr("name") == "report3" ){
+	div = $j("#report3");
+	embedReportById(div, "c2a71f8d2f12e4107ceba55df699b6f9");
+}
+else if( $j(this).attr("name") == "report4" ){
+	params = {sysparm_title: "Test Report 3", sysparm_field: "u_requested_for", sysparm_type: "single_score", sysparm_table: "x_58872_needit_needit", sysparm_aggregate:"COUNT"};
+	div = $j("#report4");
+	embedReportByParams(div, params);
+}
+  });
+
+});
+					
+]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_58872_needit_Test_UI_Page.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+
+ 
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+	<head>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600" />
+	</head>
+	<style>
+	.bg{
+	background-color : #f5f0f0;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+	}
+	.heading{
+		font-family: 'Dancing Script', cursive;
+		  text-align: center;
+		color:white;
+		padding: 20px;
+		
+		}
+		.bg-header{
+background: #34e89e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0f3443, #34e89e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0f3443, #34e89e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+	.report{
+		padding:10px;
+		
+		}
+
+		.ciscoLogo {
+  width: 100%;
+  height: auto;
+  
+}	
+		.refresh-style{
+		font-size: 20px;
+		}
+</style>
+	<g:requires name="scripts/GlideV2ChartingIncludes.js" includes="true"/>
+	<body>
+     <g:inline template="reporting_includes.xml" />
+		
+	 <div class="container-fluid">
+		<div class="row bg-header">
+			<h2 class="heading">Dashboard</h2>
+		</div>
+		<div class="row bg" style="padding:10px;">
+			<div class="col-sm-4">
+				
+				<div  id="report1" class="bg report"></div>
+				<button><i class="icon-clear-cache refresh refresh-style" name ="report1"></i></button>
+			</div>
+			<div class="col-sm-7">
+				<div  id="report2" class="bg report"></div>
+				<button><i class="icon-clear-cache refresh refresh-style" name ="report2"></i></button>
+			</div>
+			<div class="col-sm-1">
+				<img src="CrestLogo.png" alt="Cisco Logo" class="ciscoLogo"  /> 
+				<center><button><i class="icon-hardware refresh" name ="report4" style="font-size: 64px;"></i></button></center>
+				<div  id="report4" class="bg report"></div>
+			</div>
+		</div>
+		<div class="row">
+			<button><i class="icon-clear-cache refresh refresh-style" name ="report3"></i> </button>
+			<div  id="report3"></div>
+		</div>
+	</div>
+	</body>
+</j:jelly>
+
+	
+	]]></html>
+        <name>Test_UI_Page</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-02-13 13:35:22</sys_created_on>
+        <sys_id>0c9eac792f1220107ceba55df699b604</sys_id>
+        <sys_mod_count>135</sys_mod_count>
+        <sys_name>Test_UI_Page</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ui_page_0c9eac792f1220107ceba55df699b604</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-02-15 07:33:08</sys_updated_on>
+    </sys_ui_page>
+</record_update>
